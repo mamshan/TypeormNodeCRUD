@@ -6,7 +6,7 @@ import path from 'path';
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config(); 
-
+import userRoutes from './routes/userRoutes';
 
 const app = express()
 app.use(express.json())
@@ -20,6 +20,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
  
+app.use('/api/users', userRoutes);
 
 import { Post } from "./entity/Post"
 import { Category } from "./entity/Category"
@@ -34,6 +35,7 @@ myDataSource.initialize()
         console.error("Error during Data Source initialization:", err)
     })
 
+    /*
 // register routes
 app.get("/users", async function (req: Request, res: Response) {
   const userRepository = myDataSource.getRepository(Category)
@@ -47,6 +49,8 @@ app.get("/users", async function (req: Request, res: Response) {
 
   res.json(users)
 })
+
+*/
 
 app.get('/', (req, res) => {
     res.send('API is running....');
