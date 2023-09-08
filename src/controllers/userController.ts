@@ -53,6 +53,7 @@ const getUserProfile = asyncHandler(async (req: any, res: Response) => {
     }
   });
 
+
   
 export {
     authUser, 

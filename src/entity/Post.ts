@@ -4,12 +4,26 @@ import {
     JoinTable,
     ManyToMany,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
-  } from "typeorm"
-  import { Category } from "./Category"
+  } from "typeorm" 
   
   @Entity()
-  export class Post {
+ class Category {
+  @PrimaryGeneratedColumn()
+  id!: number
+
+  @Column()
+  name!: string
+
+  @OneToMany(() => Post, (post) =>(post.categories))
+    @JoinTable()
+    posts!: Post[]
+}
+
+
+  @Entity()
+  class Post {
     @PrimaryGeneratedColumn()
       id!: number
   
@@ -25,3 +39,5 @@ import {
     @JoinTable()
     categories!: Category[]
   }
+
+export {Post, Category}

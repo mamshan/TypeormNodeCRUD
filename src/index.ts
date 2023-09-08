@@ -7,6 +7,9 @@ import cors from 'cors';
 import * as dotenv from "dotenv";
 dotenv.config(); 
 import userRoutes from './routes/userRoutes';
+import orderRoutes from './routes/orderRoutes';
+import itemsRoutes from './routes/itemRoutes';
+
 import cookieParser from 'cookie-parser';
 
 const app = express()
@@ -24,10 +27,10 @@ app.use(cors(corsOptions));
  
 app.use('/api/users', userRoutes);
 
+app.use('/api/orders', orderRoutes);
+app.use('/api/items', itemsRoutes);
 
- 
-import { Post } from "./entity/Post"
-import { Category } from "./entity/Category"
+import { Category, Post } from "./entity/Post" 
 import { Users } from "./entity/Users"
 import { myDataSource } from "./config/database.providers"
 
@@ -39,7 +42,7 @@ myDataSource.initialize()
         console.error("Error during Data Source initialization:", err)
     })
 
-    /*
+     /*
 // register routes
 app.get("/users", async function (req: Request, res: Response) {
   const userRepository = myDataSource.getRepository(Category)
@@ -54,7 +57,7 @@ app.get("/users", async function (req: Request, res: Response) {
   res.json(users)
 })
 
-*/
+ */
 
 app.get('/', (req, res) => {
     res.send('API is running....');
