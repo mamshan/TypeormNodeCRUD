@@ -4,12 +4,14 @@ import express from "express";
 import { Request, Response } from "express"
 import path from 'path'; 
 import cors from 'cors';
-import dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config(); 
 import userRoutes from './routes/userRoutes';
+import cookieParser from 'cookie-parser';
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser());
 
 
 const port =   5000;
@@ -22,9 +24,11 @@ app.use(cors(corsOptions));
  
 app.use('/api/users', userRoutes);
 
+
+ 
 import { Post } from "./entity/Post"
 import { Category } from "./entity/Category"
-import { User } from "./entity/User"
+import { Users } from "./entity/Users"
 import { myDataSource } from "./config/database.providers"
 
 myDataSource.initialize()

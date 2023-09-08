@@ -1,22 +1,25 @@
 import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
-import {User} from '../entity/User';
+import {Users} from '../entity/Users';
 import { myDataSource } from "../config/database.providers"
+import express, { Request, Response, NextFunction } from 'express';
 
-const protect = asyncHandler(async (req, res, next) => {
-  let token;
+const protect = asyncHandler(async (req : any, res, next) => {
+  let token: any;
 
+  console.log(req.cookie);
+  
   token = req.cookies.jwt;
 
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      console.log(decoded);
+   
 
        
-      const userRepository = myDataSource.getRepository(User)
-      const user = await userRepository.findOne({ where:  { id: decoded.userId }  })
-
+      const userRepository = myDataSource.getRepository(Users)
+      req.user  = await userRepository.findOne({ where:  { id: decoded.userId }  })
+      
 
       next();
     } catch (error) {

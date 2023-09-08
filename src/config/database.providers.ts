@@ -2,17 +2,29 @@ import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { Post } from "../entity/Post"
 import { Category } from "../entity/Category"
-import { User } from "../entity/User"
+import { Users } from "../entity/Users"
+/*
 export const myDataSource = new DataSource({
   type: "mysql",
   host: "localhost",
   username: "admin",
   password: "password",
   database: "WHEELS",
-  synchronize: true,
+  synchronize: false,
   logging: true,
   entities: [Post, Category, User],
   subscribers: [],
   migrations: [],
 })
 
+*/
+
+export const myDataSource = new DataSource({
+  type: "sqlite",
+  database: "./database.sqlite",
+  synchronize: false,
+  logging: true,
+  entities: [Post, Category, Users],
+  subscribers: [],
+  migrations: [],
+})

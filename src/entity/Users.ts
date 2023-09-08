@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, BeforeUpdate } fr
 import bcrypt from 'bcryptjs';
 
 @Entity()
-export class User {
+export class Users {
     @PrimaryGeneratedColumn()
     id!: number
 
