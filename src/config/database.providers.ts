@@ -4,6 +4,7 @@ import { Category, Post } from "../entity/Post"
 import { Order, OrderItems } from "../entity/Orders" 
 import { Users } from "../entity/Users"
 
+/*
 export const myDataSource = new DataSource({
   type: "mysql",
   host: "localhost",
@@ -16,16 +17,16 @@ export const myDataSource = new DataSource({
   subscribers: [],
   migrations: [],
 })
+*/
 
 
-/*
 export const myDataSource = new DataSource({
   type: "sqlite",
   database: "./database.sqlite",
-  synchronize: false,
+  synchronize: true,
   logging: true,
-  entities: [Post, Category, Users],
+  entities: [Post, Category,Order,OrderItems, Users],
   subscribers: [],
   migrations: [],
 })
-*/
+

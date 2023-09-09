@@ -25,7 +25,7 @@ class Order {
     @Column({ type: 'varchar', length: 255 })
     buyer: string;
     
-    @OneToMany(() => OrderItems, (orderItems) =>(orderItems.order))
+    @OneToMany(() => OrderItems, (orderItems) =>(orderItems.orderId))
     @JoinTable()
     OrderItems!: OrderItems[]
 }
@@ -48,7 +48,7 @@ class OrderItems {
     
     @ManyToOne(() => Order, (order) => order.OrderItems)
     @JoinTable()
-    order!: Order[]
+    orderId!: Order[]
 }
 
 export {Order, OrderItems}

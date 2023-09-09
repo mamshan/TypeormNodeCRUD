@@ -111,7 +111,7 @@ const getOrders = asyncHandler(async (req, res) => {
     if (order) {
       
       // Update the order
-    await userRepository.update( { id: req.body.id },
+      const updatedorder = await userRepository.update( { id: req.body.id },
       {
         orderNo,
         orderDate,
@@ -133,7 +133,16 @@ const getOrders = asyncHandler(async (req, res) => {
       // Create/update order items
     //  await OrderItems.bulkCreate(orderItems.map((item) => ({ ...item, orderId })), { validate: true });
  
- 
+    const orderitemsls = orderItems.map((item) => ({  ...item, orderId }));
+
+    const userRepositoryitms = myDataSource.getRepository(OrderItems)
+    const userToDelete = await userRepositoryitms.find({ where:  { orderId: req.body.id }  })  
+    await userRepositoryitms.delete({ orderId: req.body.id });
+
+
+    const orderls = await userRepositoryitms.save(
+        orderitemsls
+      );
 
       res.json({
         _id: order.id,
