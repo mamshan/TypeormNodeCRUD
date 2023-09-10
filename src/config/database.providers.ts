@@ -5,7 +5,6 @@ import { Order, OrderItems } from "../entity/Orders"
 import { Performa, PerformaItems } from "../entity/Performa" 
 import { Shipment, ShipmentItems } from "../entity/shipmentModel"  
 import { Clearnce, } from "../entity/clearnceModel"  
-
 import { Users } from "../entity/Users"
 
 ///*
@@ -16,7 +15,7 @@ const myDataSource = new DataSource({
   username: "admin",
   password: "password",
   database: "WHEELS",
-  synchronize: true,
+  synchronize: false,
   logging: true,
   entities: [Post, Category,Order,OrderItems, Users,Performa, PerformaItems,Shipment, ShipmentItems,Clearnce],
   subscribers: [],
