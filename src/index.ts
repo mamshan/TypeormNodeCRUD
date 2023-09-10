@@ -8,7 +8,14 @@ import * as dotenv from "dotenv";
 dotenv.config(); 
 import userRoutes from './routes/userRoutes';
 import orderRoutes from './routes/orderRoutes';
+import performaRoutes from './routes/performaRoutes';
+import shipmentRoutes from './routes/shipmentRoutes';
 import itemsRoutes from './routes/itemRoutes';
+import fileUploadRoutes from './routes/fileUpload';
+import clearnceRoutes from './routes/clearnceRoute';
+import shipmentgldataRoute from './routes/shipmentgldataRoute';
+import lcttRoute from './routes/lcttRoute';
+import shipmentsheduleRoute from './routes/shipmentsheduleRoute';
 
 import cookieParser from 'cookie-parser';
 
@@ -26,9 +33,20 @@ var corsOptions = {
 app.use(cors(corsOptions));
  
 app.use('/api/users', userRoutes);
-
 app.use('/api/orders', orderRoutes);
+app.use('/api/performa', performaRoutes);
+app.use('/api/shipment', shipmentRoutes);
 app.use('/api/items', itemsRoutes);
+app.use('/api/upload', fileUploadRoutes);
+app.use('/api/clearance', clearnceRoutes);
+app.use('/api/shipmentshedule', shipmentsheduleRoute);
+app.use('/api/shipmentgldata', shipmentgldataRoute);
+app.use('/api/lctt', lcttRoute);
+
+
+
+
+
 
 import { Category, Post } from "./entity/Post" 
 import { Users } from "./entity/Users"
