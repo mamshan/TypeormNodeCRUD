@@ -12,7 +12,7 @@ const register = asyncHandler(async (req, res) => {
     const {
       shipmentNo,
       cleanceDate,
-      clearnceValue,
+      clearValue,
       loanDate,
       shipmentCleardt,
       remarks
@@ -37,7 +37,7 @@ const register = asyncHandler(async (req, res) => {
     const entry = await userRepository.save({
       shipmentNo,
       cleanceDate,
-      clearnceValue,
+      clearValue,
       loanDate,
       bank,
       shipmentCleardt,

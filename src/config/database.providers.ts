@@ -15,7 +15,7 @@ const myDataSource = new DataSource({
   host: "localhost",
   username: "admin",
   password: "password",
-  database: "WHEELS",
+  database: "WHEELS1",
   synchronize: false,
   logging: true,
   entities: [Post, Category,Order,OrderItems, Users,Performa, PerformaItems,Shipment, ShipmentItems,Clearnce,lc_tr],
@@ -30,7 +30,7 @@ const myDataSource = new DataSource({
  const myDataSource1 = new DataSource({
   type: "sqlite",
   database: "./database.sqlite",
-  synchronize: true,
+  synchronize: false,
   logging: true,
   entities: [Post, Category,Order,OrderItems, Users],
   subscribers: [],

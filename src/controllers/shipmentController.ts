@@ -87,11 +87,11 @@ const register = asyncHandler(async (req, res) => {
     });
   
 
-    const shipmentId = entry.id;
+    const shipment = entry.id;
 
      
 
-     const orderitemsls = shipmentItems.map((item) => ({  ...item, shipmentId }));
+     const orderitemsls = shipmentItems.map((item) => ({  ...item, shipment }));
 
     const userRepositoryitms = myDataSource.getRepository(ShipmentItems)
     const orderls = await userRepositoryitms.save(
@@ -216,9 +216,9 @@ const getData = asyncHandler(async (req, res) => {
 
       
 
-      const shipmentId = entry.id;
+      const shipment = entry.id;
      
-      const itemsls = shipmentItems.map((item) => ({  ...item, shipmentId }));
+      const itemsls = shipmentItems.map((item) => ({  ...item, shipment }));
           
       const userRepositoryitms = myDataSource.getRepository(ShipmentItems)
       const userToDelete = await userRepositoryitms.find({ where:  { shipment: req.body.id }  })  

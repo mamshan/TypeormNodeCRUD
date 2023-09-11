@@ -76,8 +76,8 @@ const register = asyncHandler(async (req, res) => {
     });
   
 
-    const performaId = entry.id;
-    const orderitemsls = performaItems.map((item) => ({  ...item, performaId }));
+    const performa = entry.id;
+    const orderitemsls = performaItems.map((item) => ({  ...item, performa }));
 
     const userRepositoryitms = myDataSource.getRepository(PerformaItems)
     const orderls = await userRepositoryitms.save(
@@ -190,11 +190,11 @@ const getData = asyncHandler(async (req, res) => {
         
   
      
-      const performaId = entry.id;
+      const performa = entry.id;
       
 
 
-      const itemsls = performaItems.map((item) => ({  ...item, performaId }));
+      const itemsls = performaItems.map((item) => ({  ...item, performa }));
           
       const userRepositoryitms = myDataSource.getRepository(PerformaItems)
       const userToDelete = await userRepositoryitms.find({ where:  { performa: req.body.id }  })  
@@ -208,9 +208,9 @@ const getData = asyncHandler(async (req, res) => {
 
 
 
-      const updatedentry = await userRepository.findOne({ where:  { id: req.body.id }  })
+      
       res.json({
-        id: updatedentry.id
+        id: req.body.id
       });
     } else {
       res.status(404);

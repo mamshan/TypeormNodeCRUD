@@ -21,7 +21,7 @@
       throw new Error('Order already exists');
     }
     
-    const order = await userRepository.save({
+    const orderent = await userRepository.save({
       orderNo,
       orderDate,
       supplier,
@@ -29,10 +29,10 @@
     });
     
     
-    const orderId = order.id;
+    const order = orderent.id;
     
     
-    const orderitemsls = orderItems.map((item) => ({  ...item, orderId }));
+    const orderitemsls = orderItems.map((item) => ({  ...item, order }));
     
     
     const userRepositoryitms = myDataSource.getRepository(OrderItems)
@@ -43,10 +43,10 @@
       
       
       
-      if (order) {
+      if (orderent) {
         
         res.status(201).json({
-          entry: order,
+          entry: orderent,
           OrderItems: orderitemsls
         });
       } else {
@@ -133,9 +133,7 @@
             );
             
             res.json({
-              _id: order.id,
-              supplier: order.supplier,
-              buyer: order.buyer,
+              id: req.body.id , 
             });
           } else {
             res.status(404);
