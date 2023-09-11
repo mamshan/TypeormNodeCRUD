@@ -93,7 +93,7 @@ class Performa {
     @UpdateDateColumn()
     updatedAt: Date;
     
-    @OneToMany(() => PerformaItems, (orderItems) =>(orderItems.performaId))
+    @OneToMany(() => PerformaItems, (orderItems) =>(orderItems.performa))
     @JoinTable()
     PerformaItems!: PerformaItems[]
 }
@@ -121,7 +121,7 @@ class PerformaItems {
 
     @ManyToOne(() => Performa, (order) => order.PerformaItems)
     @JoinTable()
-    performaId!: Performa[]
+    performa!: Performa[]
 }
 
 export {Performa, PerformaItems}

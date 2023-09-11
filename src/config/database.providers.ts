@@ -6,8 +6,9 @@ import { Performa, PerformaItems } from "../entity/Performa"
 import { Shipment, ShipmentItems } from "../entity/shipmentModel"  
 import { Clearnce, } from "../entity/clearnceModel"  
 import { Users } from "../entity/Users"
+import { lc_tr } from "../entity/lcttModel"
 
-///*
+
 
 const myDataSource = new DataSource({
   type: "mysql",
@@ -17,15 +18,16 @@ const myDataSource = new DataSource({
   database: "WHEELS",
   synchronize: false,
   logging: true,
-  entities: [Post, Category,Order,OrderItems, Users,Performa, PerformaItems,Shipment, ShipmentItems,Clearnce],
+  entities: [Post, Category,Order,OrderItems, Users,Performa, PerformaItems,Shipment, ShipmentItems,Clearnce,lc_tr],
   subscribers: [],
   migrations: [],
 })
-//*/
 
 
-/*
- const myDataSource = new DataSource({
+
+
+
+ const myDataSource1 = new DataSource({
   type: "sqlite",
   database: "./database.sqlite",
   synchronize: true,
@@ -34,17 +36,8 @@ const myDataSource = new DataSource({
   subscribers: [],
   migrations: [],
 })
-*/
+
  
-const myDataSource1 = new DataSource({
-  type: "sqlite",
-  database: "./database.sqlite",
-  synchronize: true,
-  logging: true,
-  entities: [Post, Category,Order,OrderItems, Users],
-  subscribers: [],
-  migrations: [],
-})
 
 
 

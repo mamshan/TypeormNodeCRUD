@@ -8,7 +8,7 @@ import {
   } from 'typeorm';
   
   @Entity('lc_tr')
-  class lc_tr extends BaseEntity {
+  class lc_tr  {
     @PrimaryGeneratedColumn()
     id: number;
   

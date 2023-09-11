@@ -10,7 +10,7 @@ import {
     UpdateDateColumn,
 } from "typeorm" 
 
-@Entity({ name : "performas"})
+@Entity({ name : "shipments"})
 class Shipment {
     @PrimaryGeneratedColumn()
     id!: number
@@ -102,13 +102,13 @@ class Shipment {
   @Column()
   freightChequ: string;
     
-    @OneToMany(() => ShipmentItems, (orderItems) =>(orderItems.shipmentId))
+    @OneToMany(() => ShipmentItems, (orderItems) =>(orderItems.shipment))
     @JoinTable()
     ShipmentItems!: ShipmentItems[]
 }
 
 
-@Entity({ name : "performa_items"})
+@Entity({ name : "shipment_items"})
 class ShipmentItems {
     @PrimaryGeneratedColumn()
     id!: number
@@ -130,7 +130,7 @@ class ShipmentItems {
 
     @ManyToOne(() => Shipment, (order) => order.ShipmentItems)
     @JoinTable()
-    shipmentId!: Shipment[]
+    shipment!: Shipment[]
 }
 
 export {Shipment, ShipmentItems}

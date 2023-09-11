@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import {lc_tr } from '../entity/lcttModel';
-import { myDataSource } from '../config/database.providers';
+import { myDataSource1 } from '../config/database.providers';
 
 
 // @desc    Register a new user
@@ -36,7 +36,7 @@ const register = asyncHandler(async (req, res) => {
 
  
 
-    const userRepository = myDataSource.getRepository(lc_tr)
+    const userRepository = myDataSource1.getRepository(lc_tr)
     const entryExists = await userRepository.findOne({ where:  { lc_tr_no: lc_tr_no }  })
 
 
@@ -84,9 +84,9 @@ const getData = asyncHandler(async (req, res) => {
 
     const flag = "LC";
 
- 
-    const userRepository = myDataSource.getRepository(lc_tr)
-      
+    
+    const userRepository = myDataSource1.getRepository(lc_tr)
+    console.log("dsef1s")
       const entries = await userRepository.find({
         where: { flag: flag ,},
         order: {
@@ -94,7 +94,7 @@ const getData = asyncHandler(async (req, res) => {
         },
       });
       
-
+     
 
 
     if (entries) {
@@ -112,7 +112,7 @@ const getData = asyncHandler(async (req, res) => {
 
  
   
-    const userRepository = myDataSource.getRepository(lc_tr)
+    const userRepository = myDataSource1.getRepository(lc_tr)
     const entry = await userRepository.findOne({ where:  { lc_tr_no: refNo }  })
 
 
@@ -131,7 +131,7 @@ const getData = asyncHandler(async (req, res) => {
    
    
     
-    const userRepository = myDataSource.getRepository(lc_tr)
+    const userRepository = myDataSource1.getRepository(lc_tr)
     const entry = await userRepository.findOne({ where:  { id: req.body.id }  })
 
     const {

@@ -221,8 +221,8 @@ const getData = asyncHandler(async (req, res) => {
       const itemsls = shipmentItems.map((item) => ({  ...item, shipmentId }));
           
       const userRepositoryitms = myDataSource.getRepository(ShipmentItems)
-      const userToDelete = await userRepositoryitms.find({ where:  { shipmentId: req.body.id }  })  
-      await userRepositoryitms.delete({ shipmentId: req.body.id });
+      const userToDelete = await userRepositoryitms.find({ where:  { shipment: req.body.id }  })  
+      await userRepositoryitms.delete({ shipment: req.body.id });
       
       
       const entryls = await userRepositoryitms.save(

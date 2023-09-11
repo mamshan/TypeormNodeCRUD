@@ -50,7 +50,7 @@ app.use('/api/lctt', lcttRoute);
 
 import { Category, Post } from "./entity/Post" 
 import { Users } from "./entity/Users"
-import { myDataSource } from "./config/database.providers"
+import { myDataSource , myDataSource1 } from "./config/database.providers"
 
 myDataSource.initialize()
     .then(() => {
@@ -59,7 +59,13 @@ myDataSource.initialize()
     .catch((err) => {
         console.error("Error during Data Source initialization:", err)
     })
-
+    myDataSource1.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err)
+    })
      /*
 // register routes
 app.get("/users", async function (req: Request, res: Response) {
